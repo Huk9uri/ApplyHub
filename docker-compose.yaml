@@ -1,21 +1,22 @@
 services:
-  postgres:
-    image: postgres:16-alpine
-    container_name: applyhub-postgres
+  mysql:
+    image: mysql:8.4
+    container_name: applyhub-mysql
     restart: unless-stopped
     ports:
-      - "5432:5432"
+      - "3306:3306"
     environment:
-      POSTGRES_USER: applyhub
-      POSTGRES_PASSWORD: applyhub
-      POSTGRES_DB: applyhub
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: applyhub
+      MYSQL_USER: applyhub
+      MYSQL_PASSWORD: applyhub
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - mysql_data:/var/lib/mysql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U applyhub -d applyhub"]
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u applyhub -papplyhub"]
       interval: 10s
       timeout: 5s
       retries: 5
 
 volumes:
-  postgres_data:
+  mysql_data:
