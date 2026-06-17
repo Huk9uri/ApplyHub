@@ -1,5 +1,7 @@
 # AGENTS.md - ApplyHub Backend
 
+커밋 메시지는 루트 AGENTS.md의 Commit Convention을 따른다.
+
 ## 1. Backend Role
 
 The backend is the core portfolio strength of ApplyHub.
