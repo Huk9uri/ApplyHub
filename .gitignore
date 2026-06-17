@@ -8,6 +8,8 @@ backend/node_modules/
 frontend/.next/
 dist/
 backend/dist/
+backend/target/
+.tools/
 
 # env
 .env
