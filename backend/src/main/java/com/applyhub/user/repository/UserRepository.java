@@ -1,0 +1,7 @@
+package com.applyhub.user.repository;                                                                                                                                                                             
+                                                                                                                                                                                                                    
+import com.applyhub.user.domain.User;                                                                                                                                                                             
+import org.springframework.data.jpa.repository.JpaRepository;                                                                                                                                                     
+                                                                                                                                                                                                                    
+public interface UserRepository extends JpaRepository<User, Long> {
+}    
