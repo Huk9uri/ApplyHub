@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import com.applyhub.user.domain.User;
+import com.applyhub.auth.exception.DuplicateEmailException;
 
 @Service
 @RequiredArgsConstructor
@@ -14,7 +15,7 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
     public void signup(SignupRequest request) {
         if (userRepository.existsByEmail(request.email())) {
-            throw new RuntimeException("이미 존재하는 이메일입니다.");
+            throw new DuplicateEmailException();
         }
         User user = new User(request.email(), passwordEncoder.encode(request.password()), request.nickname());
         userRepository.save(user);
