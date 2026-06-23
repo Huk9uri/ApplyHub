@@ -13,7 +13,7 @@ spring:
 
 app:
   jwt:
-    secret: test-secret-key-for-applyhub-jwt-over-32
+    secret: dGVzdC1zZWNyZXQta2V5LWZvci1hcHBseWh1Yi1qd3Qtb3Zlci0zMg==
     expiration-ms: 86400000
   cors:
     allowed-origin: http://localhost:3000
