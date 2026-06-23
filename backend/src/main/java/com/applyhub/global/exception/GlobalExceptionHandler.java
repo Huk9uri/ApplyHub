@@ -1,6 +1,8 @@
 package com.applyhub.global.exception;
 
 import com.applyhub.auth.exception.DuplicateEmailException;
+import com.applyhub.auth.exception.InvalidLoginException;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -14,6 +16,12 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.CONFLICT)
     public ErrorResponse handleDuplicateEmailException(DuplicateEmailException e) {
         return new ErrorResponse("DUPLICATE_EMAIL", e.getMessage());
+    }
+    
+    @ExceptionHandler(InvalidLoginException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public ErrorResponse handleInvalidLoginException(InvalidLoginException e) {
+        return new ErrorResponse("INVALID_LOGIN", e.getMessage());
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
